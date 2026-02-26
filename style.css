@@ -1,7 +1,53 @@
-body {
-    background-color: #8da399;
-    color: white;
-    text-align: center;
-    padding-top: 100px;
-    font-family: sans-serif;
+/* Общие настройки */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: #333; background: #fff; scroll-behavior: smooth; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+/* Шапка */
+header { background: #fff; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: fixed; width: 100%; top: 0; z-index: 1000; }
+nav { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.logo { font-weight: 700; font-size: 1.2rem; color: #5a7d6c; letter-spacing: 1px; }
+nav ul { display: flex; list-style: none; }
+nav ul li { margin-left: 25px; }
+nav a { text-decoration: none; color: #444; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+nav a:hover { color: #8da399; }
+
+/* Главный экран */
+.hero { 
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com'); 
+    height: 100vh; background-size: cover; background-position: center; 
+    display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; 
+}
+.hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px; font-weight: 700; line-height: 1.2; }
+.hero-content p { font-size: 1.2rem; margin-bottom: 35px; max-width: 700px; margin-left: auto; margin-right: auto; font-weight: 300; }
+
+/* Кнопки */
+.btn { background: #8da399; color: #fff; padding: 18px 40px; text-decoration: none; border-radius: 50px; font-weight: 600; transition: 0.4s; display: inline-block; }
+.btn:hover { background: #6b7e75; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+/* Секции */
+.section { padding: 100px 0; text-align: center; }
+.section h2 { font-size: 2.2rem; margin-bottom: 30px; position: relative; padding-bottom: 15px; }
+.section h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: #8da399; }
+.section p { font-size: 1.1rem; max-width: 800px; margin: 0 auto; color: #666; }
+.gray { background: #f7f9f8; }
+
+/* Карточки */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+.card { background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; }
+.card:hover { transform: translateY(-10px); }
+.card h3 { margin-bottom: 15px; color: #5a7d6c; }
+
+/* Футер */
+footer { padding: 80px 0; background: #2c3631; color: #fff; text-align: center; }
+.social-links { margin: 30px 0; }
+.social-btn { display: inline-block; margin: 0 10px; color: #fff; border: 2px solid #8da399; padding: 12px 25px; text-decoration: none; border-radius: 30px; transition: 0.3s; }
+.social-btn:hover { background: #8da399; }
+.copy { margin-top: 40px; font-size: 0.85rem; opacity: 0.5; }
+
+/* Адаптив для телефонов */
+@media (max-width: 768px) {
+    nav ul { display: none; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .section { padding: 60px 0; }
 }
