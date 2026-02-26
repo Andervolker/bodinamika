@@ -1,77 +1,13 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бодинамика в Екатеринбурге | Обучающий курс</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com" rel="stylesheet">
-</head>
-<body>
-
-<header>
-    <div class="container">
-        <p class="hero-date">Екатеринбург - Старт 25 апреля</p>
-        <h1>Бодинамика в практике</h1>
-        <p class="hero-desc">Глубокая программа по телесно-ориентированной терапии от международных экспертов. 9 практических семинаров.</p>
-        <a href="#form" class="btn">Записаться на курс</a>
-    </div>
-</header>
-
-<div class="container">
-    <section id="trainers">
-        <h2>Ведущие</h2>
-        <div class="trainers">
-            <div class="trainer-card">
-                <img src="elena.jpg" alt="Елена Алпатова" class="trainer-img">
-                <h3>Елена Алпатова</h3>
-                <p>Клинический психолог, супервизор международного уровня. Дипломы Дании и Швейцарии.</p>
-            </div>
-            <div class="trainer-card">
-                <img src="marina.jpg" alt="Марина Евлампиева" class="trainer-img">
-                <h3>Марина Евлампиева</h3>
-                <p>Клинический психолог, эксперт системы ПСИКОР. Диплом Института Бодинамики.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="program">
-        <h2>Программа обучения</h2>
-        <div class="module"><span class="module-num">Семинар 1</span> <div class="module-title">Безопасность и Эго</div></div>
-        <div class="module"><span class="module-num">Семинар 2</span> <div class="module-title">Привязанность и любовь</div></div>
-        <div class="module"><span class="module-num">Семинар 3</span> <div class="module-title">Свобода и движение</div></div>
-        <div class="module"><span class="module-num">Семинар 4</span> <div class="module-title">Сила, воля, намерение</div></div>
-        <div class="module"><span class="module-num">Семинар 5</span> <div class="module-title">Возбуждение и сексуальность</div></div>
-        <div class="module"><span class="module-num">Семинар 6</span> <div class="module-title">Я и группа. Творчество</div></div>
-        <div class="module"><span class="module-num">Семинар 7</span> <div class="module-title">Я и мир. Личностные кризисы</div></div>
-        <div class="module"><span class="module-num">Семинар 8</span> <div class="module-title">Работа с потерями и шоком</div></div>
-        <div class="module"><span class="module-num">Семинар 9</span> <div class="module-title">Экзамен и супервизия</div></div>
-    </section>
-
-    <section id="atmosphere">
-        <h2>Атмосфера курса</h2>
-        <div class="photo-container">
-            <img src="group.jpg" alt="Группа обучения в Екатеринбурге" class="group-photo">
-            <p class="photo-caption">Живое обучение, практика и поддержка сообщества в Екатеринбурге.</p>
-        </div>
-    </section>
-
-    <section id="form">
-        <div class="contact-box">
-            <h2>Оставить заявку</h2>
-            <p>Запишитесь на личный созвон с организатором</p>
-            <form action="https://formspree.io" method="POST">
-                <input type="text" name="name" placeholder="Ваше имя" required>
-                <input type="tel" name="phone" placeholder="Ваш телефон (WhatsApp)" required>
-                <button type="submit">Связаться со мной</button>
-            </form>
-        </div>
-    </section>
-</div>
-
-<footer>
-    <p>&copy; 2025 Бодинамика ТОП. Екатеринбург.</p>
-</footer>
-
-</body>
-</html>
+body { background: #000; color: #fff; font-family: 'Montserrat', sans-serif; margin: 0; }
+.container { max-width: 900px; margin: 0 auto; padding: 20px; }
+header { height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; flex-direction: column; background: #111; }
+h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: #c5a059; margin: 10px 0; }
+.btn { background: #c5a059; color: #000; padding: 15px 30px; text-decoration: none; font-weight: bold; margin-top: 20px; }
+section { padding: 50px 0; }
+h2 { border-bottom: 1px solid #c5a059; padding-bottom: 10px; }
+.trainers { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.trainer-img { width: 100%; border-radius: 5px; filter: grayscale(100%); }
+.module { border-left: 3px solid #c5a059; padding: 15px; margin-bottom: 10px; background: #0a0a0a; }
+.contact-box { border: 1px solid #c5a059; padding: 40px; text-align: center; }
+input { width: 100%; max-width: 300px; padding: 10px; margin-bottom: 15px; background: transparent; border: none; border-bottom: 1px solid #333; color: #fff; }
+button { background: #c5a059; border: none; padding: 15px 30px; cursor: pointer; font-weight: bold; text-transform: uppercase; }
