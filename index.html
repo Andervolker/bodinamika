@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бодинамика в Екатеринбурге | Обучающий курс</title>
-    <!-- Проверь, чтобы файл style.css лежал в этой же папке -->
-    <link rel="stylesheet" href="./style.css">
+    <title>Бодинамика в Екатеринбурге</title>
+    <!-- Подключаем стили без всяких точек, просто имя файла -->
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com" rel="stylesheet">
 </head>
 <body>
 
 <header>
     <div class="container">
-        <p class="hero-date">Екатеринбург - Старт 25 апреля</p>
+        <p class="hero-date">Екатеринбург - 25 апреля</p>
         <h1>Бодинамика в практике</h1>
-        <p class="hero-desc">Глубокая программа по телесно-ориентированной терапии от международных экспертов. 9 практических семинаров.</p>
-        <a href="#form" class="btn">Записаться на курс</a>
+        <p class="hero-desc">Глубокая программа от международных экспертов. 9 семинаров.</p>
+        <a href="#form" class="btn">Записаться</a>
     </div>
 </header>
 
@@ -24,58 +24,42 @@
         <h2>Ведущие</h2>
         <div class="trainers">
             <div class="trainer-card">
-                <!-- Файл должен называться точно elena.jpg -->
-                <img src="elena.jpg" alt="Елена Алпатова" class="trainer-img">
+                <img src="elena.jpg" alt="Елена" class="trainer-img">
                 <h3>Елена Алпатова</h3>
-                <p>Клинический психолог, супервизор международного уровня. Дипломы Дании и Швейцарии.</p>
+                <p>Клинический психолог, супервизор международного уровня.</p>
             </div>
             <div class="trainer-card">
-                <!-- Файл должен называться точно marina.jpg -->
-                <img src="marina.jpg" alt="Марина Евлампиева" class="trainer-img">
+                <img src="marina.jpg" alt="Марина" class="trainer-img">
                 <h3>Марина Евлампиева</h3>
-                <p>Клинический психолог, эксперт системы ПСИКОР. Диплом Института Бодинамики.</p>
+                <p>Клинический психолог, эксперт системы ПСИКОР.</p>
             </div>
         </div>
     </section>
 
     <section id="program">
-        <h2>Программа обучения</h2>
-        <div class="module"><span class="module-num">Семинар 1</span> <div class="module-title">Безопасность и Эго</div></div>
-        <div class="module"><span class="module-num">Семинар 2</span> <div class="module-title">Привязанность и любовь</div></div>
-        <div class="module"><span class="module-num">Семинар 3</span> <div class="module-title">Свобода и движение</div></div>
-        <div class="module"><span class="module-num">Семинар 4</span> <div class="module-title">Сила, воля, намерение</div></div>
-        <div class="module"><span class="module-num">Семинар 5</span> <div class="module-title">Возбуждение и сексуальность</div></div>
-        <div class="module"><span class="module-num">Семинар 6</span> <div class="module-title">Я и группа. Творчество</div></div>
-        <div class="module"><span class="module-num">Семинар 7</span> <div class="module-title">Я и мир. Личностные кризисы</div></div>
-        <div class="module"><span class="module-num">Семинар 8</span> <div class="module-title">Работа с потерями и шоком</div></div>
-        <div class="module"><span class="module-num">Семинар 9</span> <div class="module-title">Экзамен и супервизия</div></div>
-    </section>
-
-    <section id="atmosphere">
-        <h2>Атмосфера курса</h2>
-        <div class="photo-container">
-            <!-- Файл должен называться точно group.jpg -->
-            <img src="group.jpg" alt="Группа обучения в Екатеринбурге" class="group-photo">
-            <p class="photo-caption">Живое обучение, практика и поддержка сообщества в Екатеринбурге.</p>
-        </div>
+        <h2>Программа</h2>
+        <div class="module"><span>1. Безопасность и Эго</span></div>
+        <div class="module"><span>2. Привязанность и любовь</span></div>
+        <div class="module"><span>3. Свобода и движение</span></div>
+        <div class="module"><span>4. Сила и воля</span></div>
+        <div class="module"><span>5. Сексуальность и энергия</span></div>
+        <div class="module"><span>6. Я и группа</span></div>
+        <div class="module"><span>7. Я и мир</span></div>
+        <div class="module"><span>8. Шок и потери</span></div>
+        <div class="module"><span>9. Экзамен</span></div>
     </section>
 
     <section id="form">
         <div class="contact-box">
             <h2>Оставить заявку</h2>
-            <p>Запишитесь на личный созвон с организатором</p>
             <form action="https://formspree.io" method="POST">
-                <input type="text" name="name" placeholder="Ваше имя" required>
-                <input type="tel" name="phone" placeholder="Ваш телефон (WhatsApp)" required>
+                <input type="text" name="name" placeholder="Имя" required>
+                <input type="tel" name="phone" placeholder="WhatsApp" required>
                 <button type="submit">Связаться со мной</button>
             </form>
         </div>
     </section>
 </div>
-
-<footer>
-    <p>&copy; 2025 Бодинамика ТОП. Екатеринбург.</p>
-</footer>
 
 </body>
 </html>
