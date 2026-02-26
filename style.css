@@ -1,53 +1,74 @@
-/* Общие настройки */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: #333; background: #fff; scroll-behavior: smooth; }
-.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
-/* Шапка */
-header { background: #fff; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: fixed; width: 100%; top: 0; z-index: 1000; }
-nav { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-.logo { font-weight: 700; font-size: 1.2rem; color: #5a7d6c; letter-spacing: 1px; }
-nav ul { display: flex; list-style: none; }
-nav ul li { margin-left: 25px; }
-nav a { text-decoration: none; color: #444; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
-nav a:hover { color: #8da399; }
-
-/* Главный экран */
-.hero { 
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com'); 
-    height: 100vh; background-size: cover; background-position: center; 
-    display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; 
+:root {
+    --bg: #000000;
+    --card-bg: #0a0a0a;
+    --accent: #c5a059;
+    --text: #ffffff;
+    --text-dim: #a0a0a0;
 }
-.hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px; font-weight: 700; line-height: 1.2; }
-.hero-content p { font-size: 1.2rem; margin-bottom: 35px; max-width: 700px; margin-left: auto; margin-right: auto; font-weight: 300; }
 
-/* Кнопки */
-.btn { background: #8da399; color: #fff; padding: 18px 40px; text-decoration: none; border-radius: 50px; font-weight: 600; transition: 0.4s; display: inline-block; }
-.btn:hover { background: #6b7e75; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { 
+    font-family: 'Montserrat', sans-serif; 
+    background: var(--bg); 
+    color: var(--text); 
+    line-height: 1.6;
+}
 
-/* Секции */
-.section { padding: 100px 0; text-align: center; }
-.section h2 { font-size: 2.2rem; margin-bottom: 30px; position: relative; padding-bottom: 15px; }
-.section h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: #8da399; }
-.section p { font-size: 1.1rem; max-width: 800px; margin: 0 auto; color: #666; }
-.gray { background: #f7f9f8; }
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-/* Карточки */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
-.card { background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; }
-.card:hover { transform: translateY(-10px); }
-.card h3 { margin-bottom: 15px; color: #5a7d6c; }
+header { 
+    height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    text-align: center;
+    background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+}
 
-/* Футер */
-footer { padding: 80px 0; background: #2c3631; color: #fff; text-align: center; }
-.social-links { margin: 30px 0; }
-.social-btn { display: inline-block; margin: 0 10px; color: #fff; border: 2px solid #8da399; padding: 12px 25px; text-decoration: none; border-radius: 30px; transition: 0.3s; }
-.social-btn:hover { background: #8da399; }
-.copy { margin-top: 40px; font-size: 0.85rem; opacity: 0.5; }
+h1 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(2rem, 7vw, 4rem); 
+    margin: 20px 0;
+}
 
-/* Адаптив для телефонов */
+.hero-date { color: var(--accent); letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; }
+.hero-desc { color: var(--text-dim); max-width: 700px; margin: 0 auto 30px; font-size: 1.1rem; }
+
+.btn { 
+    display: inline-block;
+    padding: 18px 40px; 
+    background: var(--accent); 
+    color: #000; 
+    text-decoration: none; 
+    font-weight: 600; 
+    text-transform: uppercase; 
+    transition: 0.3s;
+}
+
+section { padding: 80px 0; }
+h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 40px; border-bottom: 1px solid #222; padding-bottom: 10px; }
+
+.trainers { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.trainer-card { background: var(--card-bg); padding: 30px; border: 1px solid #1a1a1a; text-align: center; }
+.trainer-img { width: 100%; height: auto; max-height: 400px; object-fit: cover; margin-bottom: 20px; filter: grayscale(100%); border-radius: 4px; }
+
+.module { margin-bottom: 15px; padding: 20px; background: #080808; border-left: 3px solid var(--accent); }
+.module-num { color: var(--accent); font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+.module-title { font-size: 1.2rem; margin: 5px 0; font-family: 'Playfair Display', serif; }
+
+.contact-box { background: var(--card-bg); padding: 50px; border: 1px solid var(--accent); text-align: center; }
+input { 
+    width: 100%; max-width: 400px; background: transparent; border: none; 
+    border-bottom: 1px solid #333; color: #fff; padding: 15px; margin: 0 auto 20px; display: block; outline: none;
+}
+input:focus { border-bottom-color: var(--accent); }
+.contact-box button { 
+    background: var(--accent); color: #000; padding: 15px 40px; border: none; 
+    cursor: pointer; font-weight: bold; text-transform: uppercase;
+}
+
+footer { padding: 40px; text-align: center; color: #333; font-size: 0.8rem; }
+
 @media (max-width: 768px) {
-    nav ul { display: none; }
-    .hero-content h1 { font-size: 2.2rem; }
-    .section { padding: 60px 0; }
+    .trainers { grid-template-columns: 1fr; }
 }
