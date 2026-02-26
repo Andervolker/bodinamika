@@ -1,74 +1,77 @@
-:root {
-    --bg: #000000;
-    --card-bg: #0a0a0a;
-    --accent: #c5a059;
-    --text: #ffffff;
-    --text-dim: #a0a0a0;
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бодинамика в Екатеринбурге | Обучающий курс</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+</head>
+<body>
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { 
-    font-family: 'Montserrat', sans-serif; 
-    background: var(--bg); 
-    color: var(--text); 
-    line-height: 1.6;
-}
+<header>
+    <div class="container">
+        <p class="hero-date">Екатеринбург - Старт 25 апреля</p>
+        <h1>Бодинамика в практике</h1>
+        <p class="hero-desc">Глубокая программа по телесно-ориентированной терапии от международных экспертов. 9 практических семинаров.</p>
+        <a href="#form" class="btn">Записаться на курс</a>
+    </div>
+</header>
 
-.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+<div class="container">
+    <section id="trainers">
+        <h2>Ведущие</h2>
+        <div class="trainers">
+            <div class="trainer-card">
+                <img src="elena.jpg" alt="Елена Алпатова" class="trainer-img">
+                <h3>Елена Алпатова</h3>
+                <p>Клинический психолог, супервизор международного уровня. Дипломы Дании и Швейцарии.</p>
+            </div>
+            <div class="trainer-card">
+                <img src="marina.jpg" alt="Марина Евлампиева" class="trainer-img">
+                <h3>Марина Евлампиева</h3>
+                <p>Клинический психолог, эксперт системы ПСИКОР. Диплом Института Бодинамики.</p>
+            </div>
+        </div>
+    </section>
 
-header { 
-    height: 100vh; 
-    display: flex; 
-    align-items: center; 
-    text-align: center;
-    background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
-}
+    <section id="program">
+        <h2>Программа обучения</h2>
+        <div class="module"><span class="module-num">Семинар 1</span> <div class="module-title">Безопасность и Эго</div></div>
+        <div class="module"><span class="module-num">Семинар 2</span> <div class="module-title">Привязанность и любовь</div></div>
+        <div class="module"><span class="module-num">Семинар 3</span> <div class="module-title">Свобода и движение</div></div>
+        <div class="module"><span class="module-num">Семинар 4</span> <div class="module-title">Сила, воля, намерение</div></div>
+        <div class="module"><span class="module-num">Семинар 5</span> <div class="module-title">Возбуждение и сексуальность</div></div>
+        <div class="module"><span class="module-num">Семинар 6</span> <div class="module-title">Я и группа. Творчество</div></div>
+        <div class="module"><span class="module-num">Семинар 7</span> <div class="module-title">Я и мир. Личностные кризисы</div></div>
+        <div class="module"><span class="module-num">Семинар 8</span> <div class="module-title">Работа с потерями и шоком</div></div>
+        <div class="module"><span class="module-num">Семинар 9</span> <div class="module-title">Экзамен и супервизия</div></div>
+    </section>
 
-h1 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: clamp(2rem, 7vw, 4rem); 
-    margin: 20px 0;
-}
+    <section id="atmosphere">
+        <h2>Атмосфера курса</h2>
+        <div class="photo-container">
+            <img src="group.jpg" alt="Группа обучения в Екатеринбурге" class="group-photo">
+            <p class="photo-caption">Живое обучение, практика и поддержка сообщества в Екатеринбурге.</p>
+        </div>
+    </section>
 
-.hero-date { color: var(--accent); letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; }
-.hero-desc { color: var(--text-dim); max-width: 700px; margin: 0 auto 30px; font-size: 1.1rem; }
+    <section id="form">
+        <div class="contact-box">
+            <h2>Оставить заявку</h2>
+            <p>Запишитесь на личный созвон с организатором</p>
+            <form action="https://formspree.io" method="POST">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="tel" name="phone" placeholder="Ваш телефон (WhatsApp)" required>
+                <button type="submit">Связаться со мной</button>
+            </form>
+        </div>
+    </section>
+</div>
 
-.btn { 
-    display: inline-block;
-    padding: 18px 40px; 
-    background: var(--accent); 
-    color: #000; 
-    text-decoration: none; 
-    font-weight: 600; 
-    text-transform: uppercase; 
-    transition: 0.3s;
-}
+<footer>
+    <p>&copy; 2025 Бодинамика ТОП. Екатеринбург.</p>
+</footer>
 
-section { padding: 80px 0; }
-h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 40px; border-bottom: 1px solid #222; padding-bottom: 10px; }
-
-.trainers { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-.trainer-card { background: var(--card-bg); padding: 30px; border: 1px solid #1a1a1a; text-align: center; }
-.trainer-img { width: 100%; height: auto; max-height: 400px; object-fit: cover; margin-bottom: 20px; filter: grayscale(100%); border-radius: 4px; }
-
-.module { margin-bottom: 15px; padding: 20px; background: #080808; border-left: 3px solid var(--accent); }
-.module-num { color: var(--accent); font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
-.module-title { font-size: 1.2rem; margin: 5px 0; font-family: 'Playfair Display', serif; }
-
-.contact-box { background: var(--card-bg); padding: 50px; border: 1px solid var(--accent); text-align: center; }
-input { 
-    width: 100%; max-width: 400px; background: transparent; border: none; 
-    border-bottom: 1px solid #333; color: #fff; padding: 15px; margin: 0 auto 20px; display: block; outline: none;
-}
-input:focus { border-bottom-color: var(--accent); }
-.contact-box button { 
-    background: var(--accent); color: #000; padding: 15px 40px; border: none; 
-    cursor: pointer; font-weight: bold; text-transform: uppercase;
-}
-
-footer { padding: 40px; text-align: center; color: #333; font-size: 0.8rem; }
-
-@media (max-width: 768px) {
-    .trainers { grid-template-columns: 1fr; }
-}
+</body>
+</html>
