@@ -7,9 +7,7 @@
 
     <meta name="description" content="Обучающий курс по телесно-ориентированной психотерапии. Бодинамика в практике психолога. 9 семинаров. Старт 25 апреля. Екатеринбург.">
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -79,15 +77,70 @@
 
 <section>
     <h2>О программе</h2>
-    <p style="max-width:800px;margin:0 auto;text-align:center;color:var(--text-dim);">
+    <p class="center-text">
         Длительность программы — 9 семинаров по 2 дня.
         В каждом модуле теория и практика.
-        Работа с мышцами и движением,
-        телесное осознавание,
+        Работа с мышцами и движением, телесное осознавание,
         взаимодействие терапевта и клиента.
         По окончании — удостоверение о повышении квалификации
         и обучение международных стандартов.
     </p>
+</section>
+
+<!-- ✅ Атмосфера обучения (Групповое фото) -->
+<section id="atmosphere">
+    <h2>Атмосфера обучения</h2>
+    <p class="center-text">
+        Живой формат, практика в группе, поддерживающее пространство и работа с телом.
+    </p>
+
+    <!-- ВАЖНО: положи файл group.jpg рядом с index.html -->
+    <div class="photo-wrap">
+        <img class="group-photo" src="group.jpg" alt="Группа на обучении по бодинамике">
+    </div>
+</section>
+
+<!-- ✅ FAQ -->
+<section id="faq">
+    <h2>Популярные вопросы</h2>
+
+    <div class="faq">
+        <details class="faq-item">
+            <summary>Будет ли документ по окончании обучения?</summary>
+            <div class="faq-body">
+                Да. По итогам программы вы получаете <strong>удостоверение о повышении квалификации</strong>.
+                Также программа соответствует <strong>международным стандартам обучения</strong>.
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary>Где проходят занятия?</summary>
+            <div class="faq-body">
+                Очные встречи проходят в центре Екатеринбурга. Точный адрес и организационную информацию высылаем после заявки.
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary>Нужна ли специальная подготовка?</summary>
+            <div class="faq-body">
+                Программа рассчитана на практикующих специалистов: психологов, телесных терапевтов и представителей помогающих профессий.
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary>Можно ли пройти только один семинар?</summary>
+            <div class="faq-body">
+                Обычно программа проходится полностью, потому что модули связаны между собой. Уточните возможность частичного участия при заявке.
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary>Какой формат обучения?</summary>
+            <div class="faq-body">
+                9 семинаров по 2 дня: теория + практические упражнения, разбор кейсов, телесные техники и супервизионные элементы.
+            </div>
+        </details>
+    </div>
 </section>
 
 <section id="form">
@@ -95,7 +148,7 @@
         <h2>Оставить заявку</h2>
         <p>Заполните форму — мы свяжемся с вами и ответим на все вопросы.</p>
 
-        <form action="https://formspree.io/f/xykdopyn" method="POST">
+        <form action="https://formspree.io/f/xykdopyn" method="POST" id="lead-form">
             <input type="text" name="name" placeholder="Ваше имя" required>
             <input type="tel" name="phone" placeholder="Ваш телефон (WhatsApp)" required>
             <input type="email" name="email" placeholder="Ваш email" required>
@@ -104,7 +157,7 @@
             <button type="submit">Оставить заявку</button>
         </form>
 
-        <p id="success" style="display:none;margin-top:20px;color:var(--accent);">
+        <p id="success" class="success-msg">
             Заявка отправлена. Мы свяжемся с вами в ближайшее время.
         </p>
     </div>
@@ -117,11 +170,14 @@
 </footer>
 
 <script>
-  const form = document.querySelector("form");
+  const form = document.getElementById("lead-form");
   const success = document.getElementById("success");
+
+  success.style.display = "none";
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const data = new FormData(form);
 
     const res = await fetch(form.action, {
@@ -133,6 +189,7 @@
     if (res.ok) {
       form.reset();
       success.style.display = "block";
+      success.scrollIntoView({ behavior: "smooth", block: "center" });
     } else {
       alert("Ошибка отправки. Попробуйте ещё раз.");
     }
