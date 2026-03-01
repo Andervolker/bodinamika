@@ -1,25 +1,20 @@
 :root {
-    --bg: #000000;
-    --card-bg: #0a0a0a;
+    --bg: #000;
     --accent: #c5a059;
-    --text: #ffffff;
-    --text-dim: #a0a0a0;
+    --text: #fff;
+    --text-dim: #aaa;
 }
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
     background: var(--bg);
     color: var(--text);
+    font-family: Arial, sans-serif;
     line-height: 1.6;
 }
 
@@ -29,255 +24,135 @@ body {
     padding: 0 20px;
 }
 
+/* HERO */
+
 header {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     text-align: center;
-    background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
-}
-
-h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 7vw, 4rem);
-    margin: 20px 0;
-    color: var(--accent);
+    background: radial-gradient(circle at top, #111 0%, #000 100%);
+    padding: 60px 0;
 }
 
 .hero-date {
     color: var(--accent);
-    letter-spacing: 4px;
-    text-transform: uppercase;
     font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
 }
 
 .hero-desc {
     color: var(--text-dim);
-    max-width: 700px;
-    margin: 0 auto 30px;
-    font-size: 1.1rem;
+    margin-bottom: 35px;
 }
 
 .btn {
     display: inline-block;
-    padding: 18px 40px;
+    padding: 15px 35px;
     background: var(--accent);
     color: #000;
     text-decoration: none;
-    font-weight: 600;
-    text-transform: uppercase;
-    transition: 0.3s;
-    border: none;
-    cursor: pointer;
+    font-weight: bold;
 }
 
-.btn:hover {
-    background: #fff;
-    transform: translateY(-3px);
-}
+/* SECTIONS */
 
 section {
     padding: 80px 0;
-    border-bottom: 1px solid #111;
 }
 
 h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    margin-bottom: 40px;
+    text-align: center;
     color: var(--accent);
+    margin-bottom: 40px;
+}
+
+.section-text {
+    max-width: 700px;
+    margin: 0 auto 30px;
     text-align: center;
 }
 
-.center-text{
-    max-width: 800px;
-    margin: 0 auto 22px;
-    text-align: center;
-    color: var(--text-dim);
+.benefits {
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    gap: 15px;
 }
 
 .module {
-    margin-bottom: 15px;
-    padding: 25px;
-    background: #080808;
+    background: #111;
+    padding: 15px 20px;
+    margin-bottom: 10px;
     border-left: 3px solid var(--accent);
-    display: flex;
-    align-items: flex-start;
 }
 
-.module .num {
-    color: var(--accent);
-    font-weight: bold;
-    margin-right: 20px;
-    font-size: 1.3rem;
-}
+/* PRICE */
 
-.trainers {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-}
-
-.trainer-card {
-    background: var(--card-bg);
-    padding: 30px;
-    border: 1px solid #1a1a1a;
+#price {
     text-align: center;
-    flex: 1;
-    min-width: 300px;
-    max-width: 450px;
 }
 
-.img-wrapper {
-    width: 100%;
-    height: 400px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    border-radius: 4px;
+.old-price {
+    text-decoration: line-through;
+    color: #777;
+    font-size: 1.2rem;
 }
 
-.img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(100%);
-    transition: 0.5s;
-}
-
-.trainer-card:hover img {
-    filter: grayscale(0%);
-}
-
-/* ✅ Групповое фото */
-.photo-wrap{
-    max-width: 1000px;
-    margin: 0 auto;
-    border-radius: 6px;
-    overflow: hidden;
-    border: 1px solid rgba(197,160,89,0.7);
-}
-
-.group-photo{
-    width: 100%;
-    height: auto;
-    display: block;
-    filter: grayscale(20%);
-    transition: 0.5s;
-}
-
-.group-photo:hover{
-    filter: grayscale(0%);
-}
-
-/* ✅ FAQ accordion */
-.faq{
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.faq-item{
-    background: #080808;
-    border: 1px solid #1a1a1a;
-    margin-bottom: 15px;
-}
-
-.faq-item summary{
-    list-style: none;
-    cursor: pointer;
-    padding: 22px 22px;
+.new-price {
+    font-size: 2rem;
     color: var(--accent);
-    font-weight: 600;
-    position: relative;
+    margin: 10px 0;
 }
 
-.faq-item summary::-webkit-details-marker{
-    display: none;
-}
-
-.faq-item summary::after{
-    content: "+";
-    position: absolute;
-    right: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--accent);
-    font-size: 1.3rem;
-}
-
-.faq-item[open] summary::after{
-    content: "—";
-}
-
-.faq-body{
-    padding: 0 22px 22px;
+.price-note {
     color: var(--text-dim);
-    font-size: 0.98rem;
 }
+
+/* FORM */
 
 .contact-box {
-    background: var(--card-bg);
-    padding: 60px;
-    border: 1px solid var(--accent);
+    background: #111;
+    padding: 50px;
     text-align: center;
 }
 
 input {
     width: 100%;
     max-width: 400px;
-    background: transparent;
+    padding: 12px;
+    margin: 0 auto 15px;
+    display: block;
     border: none;
     border-bottom: 1px solid #333;
+    background: transparent;
     color: #fff;
-    padding: 15px;
-    margin: 0 auto 20px;
-    display: block;
-    outline: none;
-    text-align: center;
-    font-size: 1rem;
 }
 
-input:focus {
-    border-bottom-color: var(--accent);
-}
-
-.contact-box button {
+button {
+    padding: 15px 35px;
     background: var(--accent);
-    color: #000;
-    padding: 18px 50px;
     border: none;
     cursor: pointer;
     font-weight: bold;
-    text-transform: uppercase;
 }
 
-.success-msg{
-    display: none;
-    margin-top: 20px;
-    color: var(--accent);
-}
+/* FOOTER */
 
 footer {
-    padding: 40px;
     text-align: center;
-    color: #444;
-    font-size: 0.8rem;
-}
-
-@media (max-width: 768px) {
-    .img-wrapper {
-        height: 350px;
-    }
-
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    .contact-box {
-        padding: 30px 15px;
-    }
-
-    .faq-item summary{
-        padding-right: 48px;
-    }
+    padding: 40px;
+    color: #555;
 }
