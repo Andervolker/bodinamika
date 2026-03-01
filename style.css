@@ -5,15 +5,9 @@
   --text: #ffffff;
   --dim: #a0a0a0;
   --line: #1a1a1a;
-  --soft: rgba(197, 160, 89, 0.18);
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 body {
@@ -33,6 +27,7 @@ body {
   position: relative;
   padding: 86px 0;
   border-top: 1px solid #0d0d0d;
+  overflow: hidden;
 }
 
 .section-alt {
@@ -53,22 +48,6 @@ h2 {
   text-align: center;
   color: var(--dim);
   font-size: 1.05rem;
-}
-
-.note, .big-note {
-  max-width: 900px;
-  margin: 22px auto 0;
-  padding: 18px 18px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(8,8,8,0.7);
-  color: var(--dim);
-  text-align: center;
-}
-
-.big-note {
-  margin-top: 26px;
-  color: #d0d0d0;
 }
 
 .btn {
@@ -101,6 +80,11 @@ h2 {
   transform: translateY(-2px);
 }
 
+/* SVG линии как на афише, просто как фон */
+:root{
+  --gold-lines: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'%3E%3Cpath d='M-50 760 C 180 640 220 520 420 420 C 620 320 760 360 980 210 C 1100 120 1170 60 1260 10' fill='none' stroke='%23c5a059' stroke-width='2' stroke-opacity='0.35'/%3E%3Cpath d='M-80 720 C 120 610 210 560 420 470 C 650 370 800 410 1030 270 C 1140 200 1210 140 1280 90' fill='none' stroke='%23c5a059' stroke-width='1.5' stroke-opacity='0.25'/%3E%3Cpath d='M-70 780 C 170 690 240 610 430 520 C 620 430 760 470 980 330 C 1110 250 1180 200 1260 160' fill='none' stroke='%23c5a059' stroke-width='1.5' stroke-opacity='0.22'/%3E%3Cpath d='M 200 840 C 330 610 450 560 560 430 C 710 250 850 240 980 120 C 1100 20 1180 -40 1280 -80' fill='none' stroke='%23c5a059' stroke-width='2' stroke-opacity='0.22'/%3E%3Cpath d='M 20 820 C 140 670 300 650 420 540 C 600 380 740 360 900 240 C 1030 140 1120 60 1240 0' fill='none' stroke='%23c5a059' stroke-width='1.5' stroke-opacity='0.20'/%3E%3Cpath d='M 520 860 C 560 650 660 600 740 500 C 860 350 940 320 1060 220 C 1180 120 1240 40 1320 -20' fill='none' stroke='%23c5a059' stroke-width='1.5' stroke-opacity='0.18'/%3E%3C/svg%3E");
+}
+
 /* HERO */
 
 .hero {
@@ -125,13 +109,13 @@ h2 {
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.55;
+  opacity: 1;
   background-image:
-    radial-gradient(circle at 75% 35%, rgba(197,160,89,0.18), transparent 55%),
-    radial-gradient(circle at 15% 70%, rgba(197,160,89,0.10), transparent 58%),
-    linear-gradient(115deg, transparent 0%, rgba(197,160,89,0.08) 35%, transparent 70%),
-    repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 42px);
-  mix-blend-mode: screen;
+    radial-gradient(circle at 70% 30%, rgba(197,160,89,0.16), transparent 55%),
+    radial-gradient(circle at 20% 75%, rgba(197,160,89,0.12), transparent 60%),
+    var(--gold-lines);
+  background-size: cover;
+  background-position: center;
   pointer-events: none;
 }
 
@@ -229,17 +213,42 @@ h2 {
   font-size: 0.98rem;
 }
 
-/* Decorative lines in sections */
-
+/* Линии внутри секций */
 .section-lines {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.35;
+  z-index: 0;
   background-image:
-    radial-gradient(circle at 20% 40%, rgba(197,160,89,0.14), transparent 58%),
-    radial-gradient(circle at 80% 65%, rgba(197,160,89,0.10), transparent 62%),
-    linear-gradient(90deg, transparent 0%, rgba(197,160,89,0.07) 40%, transparent 75%);
+    radial-gradient(circle at 20% 40%, rgba(197,160,89,0.10), transparent 60%),
+    radial-gradient(circle at 80% 65%, rgba(197,160,89,0.08), transparent 62%),
+    var(--gold-lines);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.55;
+}
+
+.section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Notes */
+
+.note, .big-note {
+  max-width: 900px;
+  margin: 22px auto 0;
+  padding: 18px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(8,8,8,0.7);
+  color: var(--dim);
+  text-align: center;
+}
+
+.big-note {
+  margin-top: 26px;
+  color: #d0d0d0;
 }
 
 /* Checks */
@@ -331,9 +340,7 @@ h2 {
   min-width: 22px;
 }
 
-.module b {
-  color: #fff;
-}
+.module b { color: #fff; }
 
 .format {
   margin-top: 18px;
@@ -593,9 +600,7 @@ h2 {
   font-weight: 600;
 }
 
-.contact-phone b {
-  color: #fff;
-}
+.contact-phone b { color: #fff; }
 
 /* Footer */
 
