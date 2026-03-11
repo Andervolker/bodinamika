@@ -18,7 +18,9 @@
       (function(m,e,t,r,i,k,a){
           m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
           m[i].l=1*new Date();
-          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          for (var j = 0; j < document.scripts.length; j++) {
+            if (document.scripts[j].src === r) { return; }
+          }
           k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
       })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107253603', 'ym');
 
@@ -50,7 +52,7 @@
       transition: 0.3s;
       border: none;
       cursor: pointer;
-      white-space: nowrap;
+      text-align: center;
     }
 
     .telegram-btn-top:hover {
@@ -59,18 +61,24 @@
     }
 
     .telegram-btn-form {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 16px;
-      padding: 16px 28px;
+      width: 100%;
+      max-width: 460px;
+      margin: 16px auto 0;
+      padding: 16px 18px;
       background: #229ED9;
       color: #fff;
       text-decoration: none;
       font-weight: 700;
       border-radius: 14px;
       transition: 0.3s;
-      white-space: nowrap;
+      text-align: center;
+      white-space: normal;
+      line-height: 1.35;
+      word-break: break-word;
+      overflow-wrap: anywhere;
     }
 
     .telegram-btn-form:hover {
@@ -144,6 +152,8 @@
 
     .contact-telegram-form {
       margin-top: 8px;
+      display: flex;
+      justify-content: center;
     }
 
     .contact-links a {
@@ -173,9 +183,14 @@
         padding: 12px 16px;
         font-size: 0.95rem;
       }
+    }
 
+    @media (max-width: 520px) {
       .telegram-btn-form {
-        width: 100%;
+        max-width: 100%;
+        padding: 16px 14px;
+        font-size: 0.96rem;
+        border-radius: 14px;
       }
     }
   </style>
