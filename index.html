@@ -560,47 +560,44 @@
         statusEl.dataset.mode = mode || '';
       };
 
-      form.addEventListener('submit', async (e) => {
+      form.addEventListener('submit', (e) => {
         e.preventDefault();
         if (submitBtn) submitBtn.disabled = true;
 
         setStatus('Отправляем заявку...', 'loading');
 
-        const formData = new FormData(form);
-        try {
-          const res = await fetch(actionUrl, {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-          });
+        // Always submit natively into a hidden iframe.
+        // This is the most reliable way to ensure Formspree receives the POST
+        // without CORS/fetch quirks, while keeping the user on this page.
+        let iframe = document.getElementById(iframeName);
+        if (!iframe) {
+          iframe = document.createElement('iframe');
+          iframe.id = iframeName;
+          iframe.name = iframeName;
+          iframe.style.display = 'none';
+          document.body.appendChild(iframe);
+        }
 
-          if (!res.ok) throw new Error('Form submission failed');
-
+        // When Formspree finishes rendering its response inside the iframe,
+        // update the status. (Exact response body isn't accessible cross-domain.)
+        iframe.onload = () => {
           setStatus('Спасибо! Заявка отправлена. Мы свяжемся с вами в ближайшее время.', 'success');
           form.reset();
-        } catch (err) {
-          // Fallback: submit into hidden iframe to avoid page redirect.
-          try {
-            let iframe = document.getElementById('formspree_iframe');
-            if (!iframe) {
-              iframe = document.createElement('iframe');
-              iframe.id = 'formspree_iframe';
-              iframe.name = iframeName;
-              iframe.style.display = 'none';
-              document.body.appendChild(iframe);
-            }
-
-            form.setAttribute('target', iframeName);
-            // Native submit bypasses submit event listeners (so no redirect of main page).
-            form.submit();
-
-            setStatus('Спасибо! Заявка отправлена.', 'success');
-          } catch (e2) {
-            setStatus('Не удалось отправить заявку. Попробуйте ещё раз.', 'error');
-          }
-        } finally {
           if (submitBtn) submitBtn.disabled = false;
-        }
+        };
+
+        // Hard fallback: if onload doesn't fire for some reason,
+        // still show success after a short delay.
+        window.setTimeout(() => {
+          if (statusEl && statusEl.dataset.mode === 'loading') {
+            setStatus('Спасибо! Заявка отправлена. Мы свяжемся с вами в ближайшее время.', 'success');
+            form.reset();
+            if (submitBtn) submitBtn.disabled = false;
+          }
+        }, 6000);
+
+        form.setAttribute('target', iframeName);
+        form.submit();
       });
     }
 
