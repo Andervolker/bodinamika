@@ -482,11 +482,18 @@
         <h2>Оставить заявку на курс</h2>
         <p class="contact-sub">Заполните форму</p>
 
-        <form action="https://formspree.io/f/maqdkjav" method="POST" class="form">
+        <form
+          id="course-form"
+          action="https://formspree.io/f/maqdkjav"
+          data-formspree-id="maqdkjav"
+          method="POST"
+          class="form"
+        >
           <input type="text" name="name" placeholder="Ваше имя" required>
           <input type="tel" name="phone" placeholder="Ваш телефон" required>
           <input type="email" name="email" placeholder="Ваш email" required>
           <input type="hidden" name="_subject" value="Новая заявка - Бодинамика (Екатеринбург)">
+          <input type="hidden" name="_cc" value="anteka@mail.ru">
 
           <div class="consent-box">
             <label for="personal-data-consent">
@@ -495,7 +502,8 @@
             </label>
           </div>
 
-          <button type="submit" class="btn">Отправить заявку</button>
+          <button type="submit" id="course-submit" class="btn">Отправить заявку</button>
+          <div id="form-status" class="form-status" aria-live="polite"></div>
         </form>
 
         <div class="contact-telegram-form">
@@ -524,6 +532,107 @@
 <a class="telegram-floating" href="https://t.me/Ekaterina_psy11" target="_blank" rel="noopener noreferrer">
   Telegram
 </a>
+
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie consent">
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-title">Куки и аналитика</div>
+    <div class="cookie-banner-text">
+      Мы используем файлы cookie и аналитику для работы сайта и измерения посещаемости (в т.ч. Яндекс.Метрика).
+      При отправке формы данные передаются через сервис Formspree. <a href="privacy.html" class="cookie-link" target="_blank" rel="noopener noreferrer">Подробнее</a>.
+    </div>
+    <button id="cookie-accept" class="cookie-btn" type="button">Ок</button>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const form = document.getElementById('course-form');
+    const submitBtn = document.getElementById('course-submit');
+    const statusEl = document.getElementById('form-status');
+
+    // Since we intercept submit, keep the user on the current page.
+    if (form && statusEl) {
+      const actionUrl = form.getAttribute('action');
+      const iframeName = 'formspree_iframe';
+
+      const setStatus = (text, mode) => {
+        statusEl.textContent = text || '';
+        statusEl.dataset.mode = mode || '';
+      };
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (submitBtn) submitBtn.disabled = true;
+
+        setStatus('Отправляем заявку...', 'loading');
+
+        const formData = new FormData(form);
+        try {
+          const res = await fetch(actionUrl, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (!res.ok) throw new Error('Form submission failed');
+
+          setStatus('Спасибо! Заявка отправлена. Мы свяжемся с вами в ближайшее время.', 'success');
+          form.reset();
+        } catch (err) {
+          // Fallback: submit into hidden iframe to avoid page redirect.
+          try {
+            let iframe = document.getElementById('formspree_iframe');
+            if (!iframe) {
+              iframe = document.createElement('iframe');
+              iframe.id = 'formspree_iframe';
+              iframe.name = iframeName;
+              iframe.style.display = 'none';
+              document.body.appendChild(iframe);
+            }
+
+            form.setAttribute('target', iframeName);
+            // Native submit bypasses submit event listeners (so no redirect of main page).
+            form.submit();
+
+            setStatus('Спасибо! Заявка отправлена.', 'success');
+          } catch (e2) {
+            setStatus('Не удалось отправить заявку. Попробуйте ещё раз.', 'error');
+          }
+        } finally {
+          if (submitBtn) submitBtn.disabled = false;
+        }
+      });
+    }
+
+    // Cookies banner
+    const cookieBanner = document.getElementById('cookie-banner');
+    const cookieAccept = document.getElementById('cookie-accept');
+    const storageKey = 'cookieConsent';
+    const consentValue = '1';
+
+    const hideBanner = () => {
+      if (cookieBanner) cookieBanner.classList.add('cookie-hidden');
+    };
+
+    try {
+      const stored = window.localStorage.getItem(storageKey);
+      if (stored === consentValue) hideBanner();
+    } catch (e) {
+      // If storage is blocked, keep banner visible.
+    }
+
+    if (cookieAccept) {
+      cookieAccept.addEventListener('click', () => {
+        try {
+          window.localStorage.setItem(storageKey, consentValue);
+        } catch (e) {
+          // ignore
+        }
+        hideBanner();
+      });
+    }
+  })();
+</script>
 
 </body>
 </html>
