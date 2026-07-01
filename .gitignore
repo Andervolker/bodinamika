@@ -1,0 +1,14 @@
+# Local environment files
+.env
+lead_hunter/.env
+
+# Python
+__pycache__/
+*.pyc
+
+# SQLite
+*.sqlite3
+*.db
+
+# Logs
+*.log
